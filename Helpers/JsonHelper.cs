@@ -5,7 +5,7 @@ namespace Helpers
 {
     public class JsonHelper
     {
-        public static bool ParseToKeyValue(JToken token, Dictionary<string, string> nodes, string parentLocation = "")
+        public static void ParseToKeyValue(JToken token, Dictionary<string, string> nodes, string parentLocation = "")
         {
             if (token.HasValues)
             {
@@ -26,7 +26,6 @@ namespace Helpers
                     ParseToKeyValue(child, nodes, parentLocation);
                 }
 
-                return true;
             }
             
             if (nodes.ContainsKey(parentLocation))
@@ -38,7 +37,6 @@ namespace Helpers
                 nodes.Add(parentLocation, token.ToString());
             }
 
-            return false;
         }
     }
 }
